@@ -10,36 +10,37 @@
     <div class="main-div">
       <div class="calc-container">
         <div class="calc-header"></div>
-
         <div class="calc-screen"></div>
         <div class="full-symbol-container">
           <div class="first-number-column">
-            <button class="calc-reset">AC</button>
+            <button class="reset">AC</button>
             <button class="seven">7</button>
             <button class="four">4</button>
             <button class="one">1</button>
             <button class="zero">0</button>
           </div>
           <div class="second-number-column">
-            <button class="calc-del">DEL</button>
+            <button class="del">DEL</button>
             <button class="eight">8</button>
             <button class="five">5</button>
             <button class="two">2</button>
             <button class="empty">empty</button>
           </div>
           <div class="third-number-column">
-            <button class="calc-remainder">%</button>
+            <button class="remainder">%</button>
             <button class="nine">9</button>
             <button class="six">6</button>
             <button class="three">3</button>
-            <button class="calc-dot">.</button>
+            <button class="dot">.</button>
           </div>
           <div class="fourth-number-column">
-            <button class="calc-division">/</button>
-            <button class="calc-multiplication">X</button>
-            <button class="calc-minus">-</button>
-            <button class="calc-plus">+</button>
-            <button class="calc-equal">=</button>
+            <button x-operation="division" class="operation division">/</button>
+            <button x-operation="multiply" class="operation multiplication">
+              X
+            </button>
+            <button x-operation="minus" class="operation minus">-</button>
+            <button x-operation="plus" class="operation plus">+</button>
+            <button x-operation="equal" class="operation equal">=</button>
           </div>
         </div>
       </div>

@@ -12,9 +12,9 @@ button {
   color: white;
 }
 
-.calc-reset,
-.calc-del,
-.calc-remainder {
+.reset,
+.del,
+.remainder {
   color: black;
 }
 
@@ -65,18 +65,18 @@ button {
   flex-direction: column;
 }
 
-.calc-reset,
-.calc-del,
-.calc-remainder {
+.reset,
+.del,
+.remainder {
   background-color: lightgray;
   height: 80px;
   border-radius: 50px;
 }
-.calc-division,
-.calc-multiplication,
-.calc-minus,
-.calc-plus,
-.calc-equal {
+.division,
+.multiplication,
+.minus,
+.plus,
+.equal {
   border-radius: 50px;
   width: 100px;
   flex-grow: 1;
@@ -93,7 +93,7 @@ button {
 .nine,
 .zero,
 .empty,
-.calc-dot {
+.dot {
   display: flex;
   text-align: center;
   flex-direction: column;
