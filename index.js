@@ -1,10 +1,11 @@
 const buttons = document.querySelectorAll("button");
 const operators = document.querySelectorAll(".operation");
-const writeNumber = document.querySelector(".calcHeaderValue");
+const numberPrint = document.querySelector(".calcHeaderValue");
 const reset = document.querySelector(".reset");
 const numberButton = document.querySelectorAll(".number");
 const equalButton = document.querySelector(".operation.equal");
 
+/* global scope variables */
 let currentState = "value1";
 let value1 = "";
 let value2 = "";
@@ -12,20 +13,28 @@ let operationsToString = "";
 let operation = "";
 
 /* clear the calc */
-reset.addEventListener("click", (e) => {
-  writeNumber.innerText = "";
-  value1 = "";
-  operationsToString = "";
-  value2 = "";
-  currentState = "value1";
+
+const clearAll = () => {
+  reset.addEventListener("click", (e) => {
+    numberPrint.innerText = "";
+    value1 = "";
+    operationsToString = "";
+    value2 = "";
+    currentState = "value1";
+  });
+};
+clearAll();
+/* pressing the equal button */
+equalButton.addEventListener("click", () => {
+  let result = operate(operationsToString, value1, value2);
+  updateScreen(result);
 });
 
-equalButton.addEventListener("click", () => {
-  console.log(operationsToString);
-  console.log(value1);
-  console.log(value2);
-  console.log(operate(operationsToString, value1, value2));
-});
+/* update the screen with numbers */
+function updateScreen(result) {
+  console.log(result);
+  numberPrint.innerHTML = result;
+}
 
 /* calculator object*/
 function operate(operator, a, b) {
@@ -36,6 +45,7 @@ function operate(operator, a, b) {
     minus: (a, b) => a - b,
     multiply: (a, b) => a * b,
     division: (a, b) => a / b,
+    remainder: (a, b) => a % b,
   };
   return operations[operator](a, b);
 }
@@ -44,9 +54,9 @@ console.log(operate("plus", 1, 4));
 /* operators */
 operators.forEach((element) => {
   element.addEventListener("click", () => {
-    writeNumber.innerHTML = "";
     operation = element.getAttribute("x-operation");
     operationsToString = operation.toString();
+    console.log(operationsToString);
     currentState = "value2";
   });
 });
@@ -57,19 +67,12 @@ numberButton.forEach((element) => {
     let numberTarget = e.target.innerText;
     if (currentState == "value1") {
       value1 += numberTarget;
-      console.log("value1: " + value1);
+      updateScreen(value1);
     } else if (currentState == "value2") {
       value2 += numberTarget;
-      console.log("value2: " + value2);
+      updateScreen(value2);
     }
   });
 });
-
-/* 
-Så skal jeg have sendt value 1 til den. 
-Så skal jeg have sendt operater til den
-Så skal jeg have sendt valyue 2 til den. //DEM MODTAGER JEG ALLEREDE,FORDI DE ER GLOBALE. 
-Så skal jeg køre operate funktionen. 
-*/
 
 //console.log("Info from bottom: " + operate("multiply", 1, 2));
