@@ -8,11 +8,11 @@ const delButton = document.querySelector(".del");
 
 /*
 To do: 
-Make DEL button work 
 I can't do multiple values yet, like 50 - 5 + 10 = 55, so i need to figure that out. 
 Check if value1 and valu2 actually has values, before we can calculate, else make an error message. 
 0 / 0 = make other error than NaN.
 Get rid of the empty button.
+Refactor del button. 
 Maybe make design more like this: https://mrbuddh4.github.io/calculator/ 
 */
 
@@ -57,6 +57,7 @@ reset.addEventListener("click", (e) => {
 /* pressing the equal button */
 equalButton.addEventListener("click", () => {
   let result = operate(operationsToString, value1, value2);
+  value1 = result;
   updateScreen(result);
 });
 
@@ -79,7 +80,7 @@ function operate(operator, a, b) {
   };
   return operations[operator](a, b);
 }
-console.log(operate("plus", 1, 4));
+//console.log(operate("plus", 1, 4));
 
 /* operators */
 operators.forEach((element) => {
@@ -88,6 +89,18 @@ operators.forEach((element) => {
     operationsToString = operation.toString();
     console.log(operationsToString);
     currentState = "value2";
+
+    if (value1 && value2) {
+      let result = operate(operationsToString, value1, value2);
+      value1 + result.toString();
+      value2 = "";
+      console.log("value1: " + value1);
+      updateScreen(result);
+
+      //Take the result, and put it into value1
+      //Then clear value2
+      //Make it possbile to enter new value into value2.
+    }
   });
 });
 
