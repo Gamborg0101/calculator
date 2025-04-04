@@ -24,24 +24,35 @@ let operationsToString = "";
 let operation = "";
 
 /* DEL button  */
-let test = "Hello there";
-console.log(test);
 delButton.addEventListener("click", () => {
-  let s = test.slice(0, -1);
-  console.log(s);
-  return s;
+  let valuesPrinted = numberPrint.innerText;
+  let slicedValues = valuesPrinted.slice(0, -1);
+
+  if (currentState == "value1") {
+    valuesPrinted = slicedValues;
+    console.log("value1: " + value1);
+    value1Sliced = value1.slice(0, -1);
+    value1 = value1Sliced;
+    numberPrint.innerText = value1;
+    return value1;
+  } else if (currentState == "value2") {
+    valuesPrinted = slicedValues;
+    console.log("value1: " + value2);
+    value2Sliced = value2.slice(0, -1);
+    value2 = value2Sliced;
+    numberPrint.innerText = value2;
+    return value2;
+  }
 });
 
 /* clear the calc */
-const clearAll = () => {
-  reset.addEventListener("click", (e) => {
-    numberPrint.innerText = "";
-    value1 = "";
-    operationsToString = "";
-    value2 = "";
-    currentState = "value1";
-  });
-};
+reset.addEventListener("click", (e) => {
+  numberPrint.innerText = "";
+  value1 = "";
+  operationsToString = "";
+  value2 = "";
+  currentState = "value1";
+});
 
 /* pressing the equal button */
 equalButton.addEventListener("click", () => {
