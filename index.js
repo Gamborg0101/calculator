@@ -5,10 +5,12 @@ const reset = document.querySelector(".reset");
 const numberButton = document.querySelectorAll(".number");
 const equalButton = document.querySelector(".operation.equal");
 const delButton = document.querySelector(".del");
+const funButton = document.querySelector(".empty");
 
 /*
 To do: 
 Make numbers dynamic, so when we enter a lot of numbers, the view should resize.
+Make funny message, when 0 / 0
 Refactor the code
 */
 
@@ -18,6 +20,10 @@ let value1 = "";
 let value2 = "";
 let operationsToString = "";
 let operation = "";
+
+funButton.addEventListener("click", () => {
+  numberPrint.innerHTML = "80085";
+});
 
 /* DEL button  */
 delButton.addEventListener("click", () => {
@@ -90,7 +96,7 @@ operators.forEach((element) => {
   });
 });
 
-/* Get values */
+/* get values */
 numberButton.forEach((element) => {
   element.addEventListener("click", (e) => {
     let numberTarget = e.target.innerText;

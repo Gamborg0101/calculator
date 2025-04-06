@@ -67,6 +67,7 @@ button {
   background-color: dodgerblue;
   height: 80px;
   border-radius: 5px;
+  border: black solid 2px;
 }
 .division,
 .multiplication,
@@ -77,6 +78,7 @@ button {
   width: 100px;
   flex-grow: 1;
   background-color: #ff8f1f;
+  border: black solid 2px;
 }
 .one,
 .two,
@@ -99,6 +101,7 @@ button {
   border-radius: 5px;
   width: 100px;
   flex-grow: 1;
+  border: black solid 2px;
 }
 
 .empty {
