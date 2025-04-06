@@ -6,12 +6,18 @@ const numberButton = document.querySelectorAll(".number");
 const equalButton = document.querySelector(".operation.equal");
 const delButton = document.querySelector(".del");
 const funButton = document.querySelector(".empty");
+const keyboardArea = document.querySelector(".calc-container");
 
 /*
 To do: 
 Make numbers dynamic, so when we enter a lot of numbers, the view should resize.
 Refactor the code
 */
+
+/* Keyboard support */
+keyboardArea.addEventListener("click", (e) => {
+  console.log(e.key == 1);
+});
 
 /* global scope variables */
 let currentState = "value1";
