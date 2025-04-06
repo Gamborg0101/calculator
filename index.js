@@ -8,12 +8,8 @@ const delButton = document.querySelector(".del");
 
 /*
 To do: 
-I can't do multiple values yet, like 50 - 5 + 10 = 55, so i need to figure that out. 
-Check if value1 and valu2 actually has values, before we can calculate, else make an error message. 
-0 / 0 = make other error than NaN.
-Get rid of the empty button.
 Refactor del button. 
-Maybe make design more like this: https://mrbuddh4.github.io/calculator/ 
+Make numbers dynamic, so when we enter a lot of numbers, the view should resize.
 */
 
 /* global scope variables */
@@ -25,23 +21,20 @@ let operation = "";
 
 /* DEL button  */
 delButton.addEventListener("click", () => {
-  let valuesPrinted = numberPrint.innerText;
-  let slicedValues = valuesPrinted.slice(0, -1);
-
   if (currentState == "value1") {
-    valuesPrinted = slicedValues;
-    console.log("value1: " + value1);
-    value1Sliced = value1.slice(0, -1);
+    let value1Sliced = value1.slice(0, -1);
     value1 = value1Sliced;
     numberPrint.innerText = value1;
     return value1;
   } else if (currentState == "value2") {
-    valuesPrinted = slicedValues;
-    console.log("value1: " + value2);
-    value2Sliced = value2.slice(0, -1);
+    let value2Sliced = value2.slice(0, -1);
     value2 = value2Sliced;
     numberPrint.innerText = value2;
     return value2;
+  } else if (value1 && value2) {
+    value1 = "";
+    value2 = "";
+    return;
   }
 });
 
@@ -58,6 +51,7 @@ reset.addEventListener("click", (e) => {
 equalButton.addEventListener("click", () => {
   let result = operate(operationsToString, value1, value2);
   value1 = result;
+  value2 = "";
   updateScreen(result);
 });
 
@@ -80,21 +74,17 @@ function operate(operator, a, b) {
   };
   return operations[operator](a, b);
 }
-//console.log(operate("plus", 1, 4));
 
 /* operators */
 operators.forEach((element) => {
   element.addEventListener("click", () => {
     operation = element.getAttribute("x-operation");
     operationsToString = operation.toString();
-    console.log(operationsToString);
     currentState = "value2";
-
     if (value1 && value2) {
       let result = operate(operationsToString, value1, value2);
       value1 = result.toString();
       value2 = "";
-      console.log("value1: " + value1);
       updateScreen(result);
     }
   });
@@ -113,5 +103,3 @@ numberButton.forEach((element) => {
     }
   });
 });
-
-//console.log("Info from bottom: " + operate("multiply", 1, 2));

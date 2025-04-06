@@ -3,13 +3,13 @@ body {
   padding: 0;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   align-items: center;
-  background-color: black;
-  color: white;
+  background-color: azure;
+  color: black;
 }
 
 button {
   font-size: 30px;
-  color: white;
+  color: black;
 }
 
 .reset,
@@ -34,27 +34,23 @@ button {
 
 .full-symbol-container {
   display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  height: 550px;
-  border: white solid 5px;
+  background-color: black;
+  border: black solid 10px;
 }
 
 .calc-header {
-  width: 100%;
   height: 200px;
 }
 
 .calc-screen {
-  width: 100%;
   height: 100px;
+  background-color: #b2b9b7;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: white solid 5px;
-  margin-bottom: 10px;
+  border: black solid 5px;
   text-align: center;
-  font-size: 26px;
+  font-size: 76px;
 }
 
 .first-number-column,
@@ -68,19 +64,19 @@ button {
 .reset,
 .del,
 .remainder {
-  background-color: lightgray;
+  background-color: dodgerblue;
   height: 80px;
-  border-radius: 50px;
+  border-radius: 5px;
 }
 .division,
 .multiplication,
 .minus,
 .plus,
 .equal {
-  border-radius: 50px;
+  border-radius: 5px;
   width: 100px;
   flex-grow: 1;
-  background-color: orange;
+  background-color: #ff8f1f;
 }
 .one,
 .two,
@@ -98,11 +94,15 @@ button {
   text-align: center;
   flex-direction: column;
   justify-content: center;
-  background-color: gray;
+  background-color: #217c7e;
   height: 80px;
-  border-radius: 50px;
+  border-radius: 5px;
   width: 100px;
   flex-grow: 1;
+}
+
+.empty {
+  background-color: rgba(255, 255, 0, 0.521);
 }
 
 /* 
