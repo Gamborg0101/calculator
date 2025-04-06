@@ -92,14 +92,10 @@ operators.forEach((element) => {
 
     if (value1 && value2) {
       let result = operate(operationsToString, value1, value2);
-      value1 + result.toString();
+      value1 = result.toString();
       value2 = "";
       console.log("value1: " + value1);
       updateScreen(result);
-
-      //Take the result, and put it into value1
-      //Then clear value2
-      //Make it possbile to enter new value into value2.
     }
   });
 });
