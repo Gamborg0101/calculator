@@ -8,8 +8,8 @@ const delButton = document.querySelector(".del");
 
 /*
 To do: 
-Refactor del button. 
 Make numbers dynamic, so when we enter a lot of numbers, the view should resize.
+Refactor the code
 */
 
 /* global scope variables */
