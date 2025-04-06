@@ -10,7 +10,6 @@ const funButton = document.querySelector(".empty");
 /*
 To do: 
 Make numbers dynamic, so when we enter a lot of numbers, the view should resize.
-Make funny message, when 0 / 0
 Refactor the code
 */
 
@@ -71,6 +70,12 @@ function updateScreen(result) {
 function operate(operator, a, b) {
   a = Number(a);
   b = Number(b);
+  if (a == 0 && operator == "division" && b == 0) {
+    console.log(a);
+    console.log(b);
+    console.log(operator); //Currently working here, so nvm this part.
+    return (numberPrint.innerHTML = "Yeah right");
+  }
   const operations = {
     plus: (a, b) => a + b,
     minus: (a, b) => a - b,
