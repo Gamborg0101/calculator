@@ -1,22 +1,23 @@
 const buttons = document.querySelectorAll("button");
 const operators = document.querySelectorAll(".operation");
-const numberPrint = document.querySelector(".calcHeaderValue");
+const numberPrint = document.querySelector(".calc-header-value");
 const reset = document.querySelector(".reset");
 const numberButton = document.querySelectorAll(".number");
 const equalButton = document.querySelector(".operation.equal");
 const delButton = document.querySelector(".del");
 const funButton = document.querySelector(".empty");
 const keyboardArea = document.querySelector(".calc-container");
+const calcScreenSize = document.querySelector(".calc-screen");
+const intSize = document.querySelector(".calc-header-value");
 
-/*
-To do: 
-Make numbers dynamic, so when we enter a lot of numbers, the view should resize.
-Refactor the code
-*/
-
-/* Keyboard support */
-keyboardArea.addEventListener("click", (e) => {
-  console.log(e.key == 1);
+numberButton.forEach((element) => {
+  element.addEventListener("click", () => {
+    if (calcScreenSize.clientWidth < intSize.clientWidth) {
+      const currentFontSize = window.getComputedStyle(intSize).fontSize;
+      let slicedCurrentFontSize = Number(currentFontSize.slice(0, 2));
+      intSize.style.fontSize = slicedCurrentFontSize * 0.75 + "px";
+    }
+  });
 });
 
 /* global scope variables */
@@ -51,6 +52,7 @@ delButton.addEventListener("click", () => {
 
 /* clear the calc */
 reset.addEventListener("click", (e) => {
+  intSize.style.fontSize = "76px";
   numberPrint.innerText = "";
   value1 = "";
   operationsToString = "";
@@ -68,7 +70,7 @@ equalButton.addEventListener("click", () => {
 
 /* update the screen with numbers */
 function updateScreen(result) {
-  console.log(result);
+  // console.log(result);
   numberPrint.innerHTML = result;
 }
 
@@ -77,9 +79,6 @@ function operate(operator, a, b) {
   a = Number(a);
   b = Number(b);
   if (a == 0 && operator == "division" && b == 0) {
-    console.log(a);
-    console.log(b);
-    console.log(operator); //Currently working here, so nvm this part.
     return (numberPrint.innerHTML = "Yeah right");
   }
   const operations = {

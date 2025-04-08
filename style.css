@@ -45,6 +45,7 @@ button {
 .calc-screen {
   height: 100px;
   background-color: #b2b9b7;
+  max-width: 410px;
   display: flex;
   justify-content: center;
   align-items: center;
